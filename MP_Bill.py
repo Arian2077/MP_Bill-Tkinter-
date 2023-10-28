@@ -20,24 +20,42 @@ weight,height = (500,500)
 #         lbl4.place(x=(weight/2)-210,y=(height/2)+185)
 #     else:
 #         page2()
-        
+
+def delete():
+    answer1.delete(0,END)
+    answer2.delete(0,END)
+    btn.destroy()
+    page2()
 
 def page2():
     lbl1.destroy()
+    win.geometry("500x600")
     lbl2.config(text="زمان مکالمه",fg="Red",bg="#00FFF7",font=("B Nazanin Bold",20))
     lbl2.place(x=(weight/5)+90,y=(height/5)-90)
     answer1.config(width=40,justify="center",font=("B Nazanin Bold",15))
     answer1.place(x=(weight/3)-57,y=(height/5)-30)
+    
     lbl3.config(text="زمان اینترنت مصرفی",fg="Red",bg="#00FFF7",font=("B Nazanin Bold",20))
-    lbl3.place(x=(weight/5)+50,y=(height/5)+30)
+    lbl3.place(x=(weight/5)+50,y=(height/5)+15)
     answer2.config(width=40,justify="center",font=("B Nazanin Bold",15))
-    answer2.place(x=(weight/3)-57,y=(height/5)+90)
+    answer2.place(x=(weight/3)-57,y=(height/5)+80)
+    
     lbl4 = Label(win,text="تعداد پیامک داده شده",fg="Red",bg="#00FFF7",font=("B Nazanin Bold",20))
     lbl4.place(x=(weight/3)-20,y=(height/3)+60)
     answer3 = Entry(win,width=40,justify="center",font=("B Nazanin Bold",15))
     answer3.place(x=(weight/3)-57,y=(height/3)+120)
     
-        
+    lbl4 = Label(win,text="تعداد پیامک داده شده",fg="Red",bg="#00FFF7",font=("B Nazanin Bold",20))
+    lbl4.place(x=(weight/3)-20,y=(height/3)+60)
+    answer3 = Entry(win,width=40,justify="center",font=("B Nazanin Bold",15))
+    answer3.place(x=(weight/3)-57,y=(height/3)+120)
+    
+    btn2 = Button(win,text="تایید",width=8,fg="white",bg="green",font=("B Nazanin Bold",20),command=check)
+    btn2.place(x=(weight/2)-73,y=(height/2)+180)
+    
+    
+def check():
+    print("hello")
 
 
 
@@ -61,7 +79,7 @@ lbl3.place(x=(weight/3)+20,y=(height/3)+60)
 answer2 = Entry(win,width=40,justify="center",font=("B Nazanin Bold",15))
 answer2.place(x=(weight/3)-57,y=(height/3)+120)
 
-btn = Button(win,text="تایید",width=8,fg="white",bg="green",font=("B Nazanin Bold",20),command=page2)
+btn = Button(win,text="تایید",width=8,fg="white",bg="green",font=("B Nazanin Bold",20),command=delete)
 btn.place(x=(weight/2)-73,y=(height/2)+100)
 
 lbl4 = Label(win,text="",fg="Red",bg="#00FFF7",font=("B Nazanin Bold",20))
