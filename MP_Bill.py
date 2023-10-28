@@ -2,61 +2,138 @@ from tkinter import *
 
 weight,height = (500,500)
 
-
-# def verify():
-#     get_ans1 = answer1.get()
-#     get_ans2 = answer2.get()
-#     if get_ans1 == "" and get_ans2 == "" :
-#         lbl4.configure(text="!لطفا اطلاعات خود را کامل کنید")
-#         lbl4.place(x=(weight/2)-140,y=(height/2)+185)
-#     elif get_ans1 == "":
-#         lbl4.configure(text="!لطفا نام کاربری خود را وارد کنید")
-#         lbl4.place(x=(weight/2)-150,y=(height/2)+185)
-#     elif get_ans2 == "":
-#         lbl4.configure(text="!لطفا شماره موبایل خود را وارد کنید")
-#         lbl4.place(x=(weight/2)-155,y=(height/2)+185)
-#     elif len(get_ans2) < 11 :
-#         lbl4.configure(text="!لطفا شماره موبایل خود را به درستی وارد کنید")
-#         lbl4.place(x=(weight/2)-210,y=(height/2)+185)
-#     else:
-#         page2()
-
 def delete():
+    lbl1.destroy()
+    lbl2.destroy()
+    lbl3.destroy()
+    lbl4.destroy()
     answer1.delete(0,END)
     answer2.delete(0,END)
     btn.destroy()
     page2()
 
+    
+def delete2():
+    answer1.destroy()
+    answer2.destroy()
+    answer3.destroy()
+    answer4.destroy()
+    page2_lbl1.destroy()
+    page2_lbl2.destroy()
+    page2_lbl3.destroy()
+    page2_lbl4.destroy()
+    btn2.destroy()
+    final_report()
+    
+
+def page1():
+    global name,number
+    name = answer1.get()
+    number = answer2.get()
+    if name == "" and number == "" :
+        lbl4.configure(text="!لطفا اطلاعات خود را کامل کنید")
+        lbl4.place(x=(weight/2)-140,y=(height/2)+185)
+    elif name == "":
+        lbl4.configure(text="!لطفا نام کاربری خود را وارد کنید")
+        lbl4.place(x=(weight/2)-150,y=(height/2)+185)
+    elif number == "":
+        lbl4.configure(text="!لطفا شماره موبایل خود را وارد کنید")
+        lbl4.place(x=(weight/2)-155,y=(height/2)+185)
+    elif len(number) != 11 :
+        lbl4.configure(text="!لطفا شماره موبایل خود را به درستی وارد کنید")
+        lbl4.place(x=(weight/2)-210,y=(height/2)+185)
+    else:
+        delete()
+
 def page2():
-    lbl1.destroy()
-    win.geometry("500x600")
-    lbl2.config(text="زمان مکالمه",fg="Red",bg="#00FFF7",font=("B Nazanin Bold",20))
-    lbl2.place(x=(weight/5)+90,y=(height/5)-90)
+    global answer3,answer4,page2_lbl1,page2_lbl2,page2_lbl3,page2_lbl4,btn2
+    win.geometry("500x550")
+    page2_lbl1 = Label(text="زمان مکالمه",fg="Red",bg="#00FFF7",font=("B Nazanin Bold",20))
+    page2_lbl1.place(x=(weight/5)+90,y=(height/5)-90)
     answer1.config(width=40,justify="center",font=("B Nazanin Bold",15))
     answer1.place(x=(weight/3)-57,y=(height/5)-30)
     
-    lbl3.config(text="زمان اینترنت مصرفی",fg="Red",bg="#00FFF7",font=("B Nazanin Bold",20))
-    lbl3.place(x=(weight/5)+50,y=(height/5)+15)
+    page2_lbl2 = Label(text="زمان اینترنت مصرفی",fg="Red",bg="#00FFF7",font=("B Nazanin Bold",20))
+    page2_lbl2.place(x=(weight/5)+50,y=(height/5)+15)
     answer2.config(width=40,justify="center",font=("B Nazanin Bold",15))
     answer2.place(x=(weight/3)-57,y=(height/5)+80)
     
-    lbl4 = Label(win,text="تعداد پیامک داده شده",fg="Red",bg="#00FFF7",font=("B Nazanin Bold",20))
-    lbl4.place(x=(weight/3)-20,y=(height/3)+60)
+    page2_lbl3 = Label(win,text="تعداد پیامک داده شده",fg="Red",bg="#00FFF7",font=("B Nazanin Bold",20))
+    page2_lbl3.place(x=(weight/3)-20,y=(height/3)+60)
     answer3 = Entry(win,width=40,justify="center",font=("B Nazanin Bold",15))
     answer3.place(x=(weight/3)-57,y=(height/3)+120)
     
-    lbl4 = Label(win,text="تعداد پیامک داده شده",fg="Red",bg="#00FFF7",font=("B Nazanin Bold",20))
-    lbl4.place(x=(weight/3)-20,y=(height/3)+60)
-    answer3 = Entry(win,width=40,justify="center",font=("B Nazanin Bold",15))
-    answer3.place(x=(weight/3)-57,y=(height/3)+120)
+    page2_lbl4 = Label(win,text="دقایق ارسال پیام صوتی",fg="Red",bg="#00FFF7",font=("B Nazanin Bold",20))
+    page2_lbl4.place(x=(weight/3)-30,y=(height/2)+85)
+    answer4 = Entry(win,width=40,justify="center",font=("B Nazanin Bold",15))
+    answer4.place(x=(weight/3)-57,y=(height/2)+140)
     
     btn2 = Button(win,text="تایید",width=8,fg="white",bg="green",font=("B Nazanin Bold",20),command=check)
-    btn2.place(x=(weight/2)-73,y=(height/2)+180)
+    btn2.place(x=(weight/2)-73,y=(height/2)+200)
+
+
+
     
     
 def check():
-    print("hello")
-
+    global v1,v2,v3,v4,talk,report,internet,sms,voice,subscription
+    try:
+        v1 = int(answer1.get())
+    except ValueError :
+        v1 = 0
+    try:
+       v2 = int(answer2.get())
+    except ValueError :
+        v2 = 0
+    try:
+        v3 = int(answer3.get())
+    except ValueError :
+        v3 = 0
+    try:
+        v4 = int(answer4.get())
+    except ValueError :
+        v4 = 0    
+    if v1 == 0 and v2 == 0 and  v3 == 0 and v4 == 0 :
+        pass
+    talk = v1 * 10
+    internet = v2 * 18
+    sms = v3 * 5
+    voice = v4 * 5
+    subscription = 150
+    report = talk + internet + sms + voice + subscription
+    delete2()
+    
+def final_report():
+    win.configure(bg="black")
+    win.geometry("400x550")
+    
+    report_name = Label(text=("نام کاربری = "+ name),fg="yellow",bg="black",font=("B Nazanin Bold",20))
+    report_name.pack(pady=5)
+    
+    report_number = Label(text=("شماره موبایل = "+ number),fg="yellow",bg="black",font=("B Nazanin Bold",20))
+    report_number.pack(pady=5)
+    
+    report_lbl1 = Label(text=("مکالمه = "+str(talk)),fg="yellow",bg="black",font=("B Nazanin Bold",20))
+    report_lbl1.pack(pady=5)
+    
+    report_lbl2 = Label(text=("اینترنت با تعرفه عادی = "+str(internet)),fg="yellow",bg="black",font=("B Nazanin Bold",20))
+    report_lbl2.pack(pady=5)
+    
+    report_lbl3 = Label(win,text=("پیامک = "+str(sms)),fg="yellow",bg="black",font=("B Nazanin Bold",20))
+    report_lbl3.pack(pady=5)
+    
+    report_lbl4 = Label(win,text=("پیام صوتی = "+str(voice)),fg="yellow",bg="black",font=("B Nazanin Bold",20))
+    report_lbl4.pack(pady=5)
+    
+    report_lbl5 = Label(win,text=("آبونمان = "+str(subscription)),fg="yellow",bg="black",font=("B Nazanin Bold",20))
+    report_lbl5.pack(pady=5)
+    
+    report_lbl6 = Label(win,text=("صورت حساب نهایی = "+str(report)+" تومان"),fg="green",bg="black",font=("B Nazanin Bold",20))
+    report_lbl6.pack(pady=5)
+    
+    
+    btn3 = Button(win,text="خروج",width=8,fg="white",bg="red",font=("B Nazanin Bold",20),command=win.destroy)
+    btn3.pack(pady=5)
 
 
 win = Tk()
@@ -79,13 +156,10 @@ lbl3.place(x=(weight/3)+20,y=(height/3)+60)
 answer2 = Entry(win,width=40,justify="center",font=("B Nazanin Bold",15))
 answer2.place(x=(weight/3)-57,y=(height/3)+120)
 
-btn = Button(win,text="تایید",width=8,fg="white",bg="green",font=("B Nazanin Bold",20),command=delete)
+btn = Button(win,text="شروع",width=8,fg="white",bg="green",font=("B Nazanin Bold",20),command=page1)
 btn.place(x=(weight/2)-73,y=(height/2)+100)
 
 lbl4 = Label(win,text="",fg="Red",bg="#00FFF7",font=("B Nazanin Bold",20))
-
-
-
 
 
 win.mainloop()
