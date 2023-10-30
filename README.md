@@ -6,7 +6,7 @@
 <h1>Here the Result</h1>
 <h3>main page:</h3>
 
-![1_main_page](https://github.com/Arian2077/Simple-Colors-game/assets/109338613/1f8c4f53-2256-45ae-8425-f5b76af8fab1|250x250)
+<img src="[https://your-image-url.type](https://github.com/Arian2077/Simple-Colors-game/assets/109338613/1f8c4f53-2256-45ae-8425-f5b76af8fab1)" width="100" height="100">
 <h3>guide page:</h3>
 
 ![2_guide_page](https://github.com/Arian2077/MP_Bill-Tkinter-/assets/109338613/ad2ef3ba-a1c8-4725-83d5-2b98580b2348)
