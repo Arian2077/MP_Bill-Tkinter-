@@ -11,6 +11,6 @@
 <h3>giving values page:</h3>
 ![3_page2](https://github.com/Arian2077/MP_Bill-Tkinter-/assets/109338613/9060ce75-f4fc-4d13-bebb-3f74f8e55923)
 <h3>final report page:</h3>
-![4_final_report](https://github.com/Arian2077/MP_Bill-Tkinter-/assets/109338613/09df0c34-41d2-449e-96ff-a471c85802ab)
+![4_final_report](https://github.com/Arian2077/MP_Bill-Tkinter-/assets/109338613/09df0c34-41d2-449e-96ff-a471c85802ab)<br>
 
 <p>I will make some changes in the future</p>
