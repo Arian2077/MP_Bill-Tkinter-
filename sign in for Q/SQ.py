@@ -1,108 +1,140 @@
 from tkinter import *
+import pygame
 from tkinter.filedialog import askopenfilename
 from PIL import ImageTk,Image
 
+pygame.mixer.init()
 
 
 def delete():
-    btn1.destroy()
+    pygame.mixer.music.load("Sound Effect/button-124476.mp3")
+    pygame.mixer.music.play(loops=0)
+    lbl_choice.destroy()
     btn2.destroy()
     btn3.destroy()
     btn4.destroy()
+    btn5.destroy()
     khas()
 
 
 
 def sar():
-    pass
+    pygame.mixer.music.load("Sound Effect/button-124476.mp3")
+    pygame.mixer.music.play(loops=0)
 
 def khas():
-    win.geometry("600x600")
-    ans1 = Entry(win, width=10, justify="center", font=("B Nazanin Bold", 15))
-    ans1.pack(side=(TOP))
-    lbl1 = Label(win, text=" :نام", font=("B Nazanin Bold", 15))
-    lbl1.pack(TOP)
-    # ans2 = Entry(win, width=10, justify="center", font=("B Nazanin Bold", 15))
-    # ans2.place(x=250, y=10)
-    # lbl2 = Label(win, text=":نام خانوادگی", font=("B Nazanin Bold", 15))
-    # lbl2.place(x=350, y=10)
-    # ans3 = Entry(win, width=10, justify="center", font=("B Nazanin Bold", 15))
-    # ans3.place(x=430, y=45)
-    # lbl3 = Label(win, text=":نام پدر", font=("B Nazanin Bold", 15))
-    # lbl3.place(x=530, y=45)
-    # ans4 = Entry(win, width=10, justify="center", font=("B Nazanin Bold", 15))
-    # ans4.place(x=250, y=45)
-    # lbl4 = Label(win, text=":محل تولد", font=("B Nazanin Bold", 15))
-    # lbl4.place(x=350, y=45)
-    # ans5 = Entry(win, width=10, justify="center", font=("B Nazanin Bold", 15))
-    # ans5.place(x=400, y=80)
-    # lbl5 = Label(win, text=":ش.شناسنامه", font=("B Nazanin Bold", 15))
-    # lbl5.place(x=510, y=80)
-    # ans6 = Entry(win, width=10, justify="center", font=("B Nazanin Bold", 15))
-    # ans6.place(x=250, y=80)
-    # lbl6 = Label(win, text=":ش ملی", font=("B Nazanin Bold", 15))
-    # lbl6.place(x=350, y=80)
-    # ans7 = Entry(win, width=15, justify="center", font=("B Nazanin Bold", 15))
-    # ans7.place(x=10, y=80)
-    # lbl7 = Label(win, text=":تاریخ تولد", font=("B Nazanin Bold", 15))
-    # lbl7.place(x=150, y=80)
-    # ans8 = Entry(win, width=15, justify="center", font=("B Nazanin Bold", 15))
-    # ans8.place(x=400, y=120)
-    # lbl8 = Label(win, text=":آدرس", font=("B Nazanin Bold", 15))
-    # lbl8.place(x=550, y=120)
-    # ans9 = Entry(win, width=15, justify="center", font=("B Nazanin Bold", 15))
-    # ans9.place(x=400, y=160)
-    # lbl9 = Label(win, text=":تلفن", font=("B Nazanin Bold", 15))
-    # lbl9.place(x=550, y=160)
-    # ans10 = Entry(win, width=15, justify="center", font=("B Nazanin Bold", 15))
-    # ans10.place(x=400, y=200)
-    # lbl10 = Label(win, text=":موبایل", font=("B Nazanin Bold", 15))
-    # lbl10.place(x=550, y=200)
-    # ans11 = Entry(win, width=15, justify="center", font=("B Nazanin Bold", 15))
-    # ans11.place(x=400, y=240)
-    # lbl11 = Label(win, text=":ایمیل", font=("B Nazanin Bold", 15))
-    # lbl11.place(x=550, y=240)
-    # my_label = Label(win,text="")
-    # my_label.pack()
+    win.geometry("600x500")
+    win.configure(bg="#301E67")
+    # get the photo from the path you choose then resize it to 100x100 and show it for you
     def myClick():
+        pygame.mixer.music.load("Sound Effect/button-124476.mp3")
+        pygame.mixer.music.play(loops=0)
         link = askopenfilename()
-        my_img = ImageTk.PhotoImage(Image.open(link))
-        my_label.configure(image=my_img)
-        my_label.image = my_img
-    btn_add_photo = Button(win, text="انتخاب عکس", command=myClick)
-    btn_add_photo.place(x=400, y=280)
-    btn = Button(win,text ="ثبت نام",command=sar)
-    btn.place(x=300,y=400)
+        my_img = Image.open(link)
+        resize_img = my_img.resize((100,100))
+        img = ImageTk.PhotoImage(resize_img)
+        pic.configure(image=img)
+        pic.image = img
+    
+    ################## Labels #######################
+    lbl1 = Label(win, text=" :نام",fg="#B6EADA",bg="#301E67", font=("B Nazanin Bold", 15))
+    lbl2 = Label(win, text=":نام خانوادگی",fg="#B6EADA",bg="#301E67", font=("B Nazanin Bold", 15))
+    lbl3 = Label(win, text=":نام پدر",fg="#B6EADA",bg="#301E67", font=("B Nazanin Bold", 15))
+    lbl4 = Label(win, text=":محل تولد",fg="#B6EADA",bg="#301E67", font=("B Nazanin Bold", 15))
+    lbl5 = Label(win, text=":ش.شناسنامه",fg="#B6EADA",bg="#301E67", font=("B Nazanin Bold", 15))
+    lbl6 = Label(win, text=":ش.ملی",fg="#B6EADA",bg="#301E67", font=("B Nazanin Bold", 15))
+    lbl7_1 = Label(win, text=":تاریخ تولد",fg="#B6EADA",bg="#301E67", font=("B Nazanin Bold", 15))
+    lbl7_2 = Label(win, text="/",fg="#B6EADA",bg="#301E67", font=("B Nazanin Bold", 15))
+    lbl7_3 = Label(win, text="/",fg="#B6EADA",bg="#301E67", font=("B Nazanin Bold", 15))
+    lbl8 = Label(win, text=":آدرس",fg="#B6EADA",bg="#301E67", font=("B Nazanin Bold", 15))
+    lbl9 = Label(win, text=":تلفن",fg="#B6EADA",bg="#301E67",  font=("B Nazanin Bold", 15))
+    lbl10 = Label(win, text=":موبایل",fg="#B6EADA",bg="#301E67",  font=("B Nazanin Bold", 15))
+    lbl11 = Label(win, text=":ایمیل",fg="#B6EADA",bg="#301E67",  font=("B Nazanin Bold", 15))
+    
+    ################## Entries #######################
+    ans1 = Entry(win, width=20,fg="#B6EADA",bg="#5B8FB9",justify="center", font=("B Nazanin Bold", 15))
+    ans2 = Entry(win, width=20,fg="#B6EADA",bg="#5B8FB9", justify="center", font=("B Nazanin Bold", 15))
+    ans3 = Entry(win,width=20,fg="#B6EADA",bg="#5B8FB9",justify="center", font=("B Nazanin Bold", 15))
+    ans4 = Entry(win, width=20,fg="#B6EADA",bg="#5B8FB9", justify="center", font=("B Nazanin Bold", 15))
+    ans5 = Entry(win,  width=20,fg="#B6EADA",bg="#5B8FB9",justify="center", font=("B Nazanin Bold", 15))
+    ans6 = Entry(win, width=20,fg="#B6EADA",bg="#5B8FB9", justify="center", font=("B Nazanin Bold", 15))
+    ans7_1 = Entry(win, width=5,fg="#B6EADA",bg="#5B8FB9", justify="center", font=("B Nazanin Bold", 15))
+    ans7_2 = Entry(win, width=5,fg="#B6EADA",bg="#5B8FB9", justify="center", font=("B Nazanin Bold", 15))
+    ans7_3 = Entry(win, width=5,fg="#B6EADA",bg="#5B8FB9", justify="center", font=("B Nazanin Bold", 15))
+    ans8 = Entry(win, width=20,fg="#B6EADA",bg="#5B8FB9", justify="center", font=("B Nazanin Bold", 15))
+    ans9 = Entry(win,  width=20,fg="#B6EADA",bg="#5B8FB9",justify="center", font=("B Nazanin Bold", 15))
+    ans10 = Entry(win,  width=20,fg="#B6EADA",bg="#5B8FB9",justify="center", font=("B Nazanin Bold", 15))
+    ans11 = Entry(win,  width=20,fg="#B6EADA",bg="#5B8FB9",justify="center", font=("B Nazanin Bold", 15))
+     
+    ################## location of Labels #######################
+    lbl1.place(x=490,y=10)
+    lbl2.place(x=230,y=10)
+    lbl3.place(x=490, y=70)
+    lbl4.place(x=230,y=70)
+    lbl5.place(x=490, y=130)
+    lbl6.place(x=230, y=130)
+    lbl7_1.place(x=490, y=190)
+    lbl7_2.place(x=435,y=190)
+    lbl7_3.place(x=373,y=190)
+    lbl8.place(x=230, y=190)
+    lbl9.place(x=490, y=250)    
+    lbl10.place(x=230, y=250)
+    lbl11.place(x=490, y=310)
+    
+    ################## location of Entries #######################
+    ans1.place(x=340,y=10)
+    ans2.place(x=80,y=10)
+    ans3.place(x=340, y=70)
+    ans4.place(x=80,y=70)
+    ans5.place(x=340, y=130)
+    ans6.place(x=80, y=130)
+    ans7_1.place(x=450, y=190)
+    ans7_2.place(x=390, y=190)
+    ans7_3.place(x=330, y=190)
+    ans8.place(x=80, y=190)
+    ans9.place(x=340, y=250)
+    ans10.place(x=80, y=250)
+    ans11.place(x=340, y=310)
+
+    pic = Label(win,text="",fg="#B6EADA",bg="#301E67", )
+    pic.place(x=100,y=360)
+    btn1 = Button(win,width=17,text="انتخاب عکس",fg="#B6EADA",bg="#5B8FB9",justify="center", font=("B Nazanin Bold", 10),command=myClick)
+    btn1.place(x=80,y=310)
+    
+    btn2 = Button(win,text="ثبت نام",fg="#B6EADA",bg="#5B8FB9",justify="center", font=("B Nazanin Bold", 15),command=sar)
+    btn2.place(x=260,y=400)
 
 def inter():
-    pass
+    pygame.mixer.music.load("Sound Effect/button-124476.mp3")
+    pygame.mixer.music.play(loops=0)
 
 def k2k():
-    pass
-
+    pygame.mixer.music.load("Sound Effect/button-124476.mp3")
+    pygame.mixer.music.play(loops=0)
+    
 
 win = Tk()
-win.geometry("400x400")
+win.geometry("400x200")
 win.title("")
-win.configure(bg="03001C")
+win.configure(bg="#03001C")
 win.resizable(0,0)
 
 
 ################ Widgets #####################
 
-lbl_choice = Label(win,text="نوع آزمون را انتخاب کنید",font=("B Nazanin Bold", 20))
-btn2 = Button(win,text ="سراری",width=13,font=("B Nazanin Bold", 15),command=sar)
-btn3 = Button(win,text ="بین المللی",width=13,font=("B Nazanin Bold", 15),command=inter)
-btn4 = Button(win,text ="کاردانی به کارشناسی",width=13,font=("B Nazanin Bold", 15),command=k2k)
-btn5 = Button(win,text ="خاص",width=13,font=("B Nazanin Bold", 15),command=delete)
+lbl_choice = Label(win,fg="#B6EADA",bg="#03001C",text="نوع آزمون را انتخاب کنید",font=("B Nazanin Bold", 20))
+btn2 = Button(win,fg="#B6EADA",bg="#5B8FB9",text ="سراری",width=13,font=("B Nazanin Bold", 15),command=sar)
+btn3 = Button(win,fg="#B6EADA",bg="#5B8FB9",text ="بین المللی",width=13,font=("B Nazanin Bold", 15),command=inter)
+btn4 = Button(win,fg="#B6EADA",bg="#5B8FB9",text ="کاردانی به کارشناسی",width=13,font=("B Nazanin Bold", 15),command=k2k)
+btn5 = Button(win,fg="#B6EADA",bg="#5B8FB9",text ="خاص",width=13,font=("B Nazanin Bold", 15),command=delete)
 
 ############### Widgets place #################
 
 lbl_choice.place(x=80,y=0)
-btn2.place(x=30,y=60)
-btn3.place(x=220,y=60)
-btn4.place(x=30,y=130)
-btn5.place(x=220,y=130)
+btn2.place(x=25,y=60)
+btn3.place(x=215,y=60)
+btn4.place(x=25,y=130)
+btn5.place(x=215,y=130)
 
 
 win.mainloop()
