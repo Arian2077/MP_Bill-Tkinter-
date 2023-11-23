@@ -1,11 +1,30 @@
 from tkinter import *
+from tkinter import messagebox
 import pygame
 from tkinter.filedialog import askopenfilename
 from PIL import ImageTk,Image
 
+#I used pygame for making Buttom's sound effect and pic_get for submit section
 pygame.mixer.init()
+pic_get = False
 
+'''after clicking on submit (ثبت نام) buttom , the program will send all of your informations to this section
+then it checks that did you fill all of the sections or you didn't '''
+def submit():
+    print(pic_get)
+    lst_give = [ans1,ans2,ans3,ans4,ans5,ans6,ans7_1,ans7_2,ans7_3,ans8,ans9,ans10,ans11] 
+    lst_get=[]
+    for i in range(0,12):
+        lst_get.append(lst_give[i].get())
+    if "" in lst_get :
+        messagebox.showerror("!اخطار","لطفا برای ثبت نام تمام بخش ها را پر کنید")
+    elif pic_get == False:
+        messagebox.showerror("!اخطار","لطفا عکس خود را وارد کنید")
+    else:
+        messagebox.showinfo("تبریک","ثبت نام شما با موفقیت انجام شد")
+        win.quit()
 
+#it will delete all the widgets of previous page
 def delete():
     pygame.mixer.music.load("Sound Effect/button-124476.mp3")
     pygame.mixer.music.play(loops=0)
@@ -16,17 +35,17 @@ def delete():
     btn5.destroy()
     khas()
 
-
-
 def sar():
     pygame.mixer.music.load("Sound Effect/button-124476.mp3")
     pygame.mixer.music.play(loops=0)
 
 def khas():
+    global ans1,ans2,ans3,ans4,ans5,ans6,ans7_1,ans7_2,ans7_3,ans8,ans9,ans10,ans11,pic_get
     win.geometry("600x500")
     win.configure(bg="#301E67")
     # get the photo from the path you choose then resize it to 100x100 and show it for you
     def myClick():
+        global pic_get
         pygame.mixer.music.load("Sound Effect/button-124476.mp3")
         pygame.mixer.music.play(loops=0)
         link = askopenfilename()
@@ -35,6 +54,7 @@ def khas():
         img = ImageTk.PhotoImage(resize_img)
         pic.configure(image=img)
         pic.image = img
+        pic_get = True
     
     ################## Labels #######################
     lbl1 = Label(win, text=" :نام",fg="#B6EADA",bg="#301E67", font=("B Nazanin Bold", 15))
@@ -101,7 +121,7 @@ def khas():
     btn1 = Button(win,width=17,text="انتخاب عکس",fg="#B6EADA",bg="#5B8FB9",justify="center", font=("B Nazanin Bold", 10),command=myClick)
     btn1.place(x=80,y=310)
     
-    btn2 = Button(win,text="ثبت نام",fg="#B6EADA",bg="#5B8FB9",justify="center", font=("B Nazanin Bold", 15),command=sar)
+    btn2 = Button(win,text="ثبت نام",fg="#B6EADA",bg="#5B8FB9",justify="center", font=("B Nazanin Bold", 15),command=submit)
     btn2.place(x=260,y=400)
 
 def inter():
@@ -112,13 +132,11 @@ def k2k():
     pygame.mixer.music.load("Sound Effect/button-124476.mp3")
     pygame.mixer.music.play(loops=0)
     
-
 win = Tk()
 win.geometry("400x200")
-win.title("")
+win.title("ثبت نام آزمون")
 win.configure(bg="#03001C")
 win.resizable(0,0)
-
 
 ################ Widgets #####################
 
